@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import user from '@testing-library/user-event'
 import App from '../App';
 
 test('renders learn react link', () => {
@@ -19,7 +20,7 @@ test('input changes render correct paragraph', () => {
 
 	const {getByLabelText, getByText} = render(<App />)
 	const input = getByLabelText(/app input/i)
-	fireEvent.change(input, {target: {value: mockValue}})
+	user.type(input, mockValue)
 
 	const paragraph = getByText(mockValue)
 	expect(paragraph).toBeInTheDocument()
