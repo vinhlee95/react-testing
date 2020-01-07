@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 
 function App() {
+	const [text, setText] = React.useState('')
+
   return (
     <div className="App">
       <header className="App-header">
@@ -16,6 +18,8 @@ function App() {
         >
           Learn React
         </a>
+				<label htmlFor='app-input'>App input</label>
+				<input type='text' id='app-input' onChange={e => setText(e.target.value)} />
       </header>
     </div>
   );
