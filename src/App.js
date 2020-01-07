@@ -20,6 +20,7 @@ function App() {
         </a>
 				<label htmlFor='app-input'>App input</label>
 				<input type='text' id='app-input' onChange={e => setText(e.target.value)} />
+				<p>{text}</p>
       </header>
     </div>
   );
