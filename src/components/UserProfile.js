@@ -1,5 +1,5 @@
 import React from 'react'
-import {fetchUser} from './api'
+import {fetchUser} from '../api'
 
 const UserProfile = () => {
 	const [user, setUser] = React.useState(null)

@@ -1,7 +1,7 @@
 import React from 'react'
 import {render, fireEvent, wait} from '@testing-library/react'
 import {fetchUser as mockFetchUser} from '../api'
-import UserProfile from '../UserProfile'
+import UserProfile from '../components/UserProfile'
 
 jest.mock('../api.js')
 
