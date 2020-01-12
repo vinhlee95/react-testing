@@ -5,6 +5,18 @@ import {reportError as mockReportError} from '../api'
 
 jest.mock('../api.js')
 
+beforeAll(() => {
+  jest.spyOn(console, 'error').mockImplementation(() => {})
+})
+
+afterEach(() => {
+  jest.clearAllMocks()
+})
+
+afterAll(() => {
+  console.error.mockRestore()
+})
+
 const ErrorComp = ({shouldThrow}) => {
   if(shouldThrow) throw new Error('Hello there')
   return null
