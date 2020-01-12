@@ -9,6 +9,13 @@ const fetchUser = () => {
 	})
 }
 
+const reportError = (error, info) => {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => resolve({message: 'Done'}), 500)
+	})
+}
+
 export {
-	fetchUser
+	fetchUser,
+	reportError
 }
