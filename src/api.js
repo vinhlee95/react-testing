@@ -15,7 +15,14 @@ const reportError = (error, info) => {
 	})
 }
 
+const saveData = (data) => {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => resolve(data), 500)
+	})
+}
+
 export {
 	fetchUser,
-	reportError
+	reportError,
+	saveData
 }
