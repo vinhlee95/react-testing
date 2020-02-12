@@ -24,16 +24,8 @@ const ErrorComp = ({ shouldThrow }) => {
 
 test("should report error with correct arguments", () => {
   mockReportError.mockResolvedValueOnce({ success: true });
-  const { rerender, getByRole, queryByRole, queryByText } = render(
-    <ErrorBoundary>
-      <ErrorComp />
-    </ErrorBoundary>
-  );
-  rerender(
-    <ErrorBoundary>
-      <ErrorComp shouldThrow />
-    </ErrorBoundary>
-  );
+  const { rerender, getByRole, queryByText } = render(<ErrorComp />, {wrapper: ErrorBoundary});
+  rerender(<ErrorComp shouldThrow />);
 
   expect(mockReportError).toHaveBeenCalledTimes(1);
 
@@ -42,11 +34,7 @@ test("should report error with correct arguments", () => {
   expect(mockReportError).toHaveBeenCalledWith(error, info);
 
   // Test when the component re-renders
-  rerender(
-    <ErrorBoundary>
-      <ErrorComp />
-    </ErrorBoundary>
-  );
+  rerender(<ErrorComp />);
   const button = queryByText(/try again/i)
   expect(getByRole("alert").textContent).toMatchInlineSnapshot(
     `"There was a problem."`
