@@ -4,6 +4,7 @@ import {reportError} from '../api'
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props)
+    this.tryAgain = this.tryAgain.bind(this);
     this.state = {hasError: false}
   }
 
@@ -13,7 +14,7 @@ class ErrorBoundary extends React.Component {
   }
 
   tryAgain() {
-
+    this.setState({hasError: false})
   }
 
   render() {
