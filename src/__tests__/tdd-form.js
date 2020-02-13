@@ -8,8 +8,8 @@ jest.mock('../api.js')
 
 test('should render a form with title, content and submit button', () => {
   mockSaveData.mockResolvedValueOnce()
-
-  const {getByLabelText, getByText} = render(<TddForm />)
+  const fakeUser = {id: 'user-1'}
+  const {getByLabelText, getByText} = render(<TddForm user={fakeUser} />)
   const submitButton = getByText(/submit/i)
   const data = {
     title: 'Title',
@@ -24,5 +24,5 @@ test('should render a form with title, content and submit button', () => {
 
   expect(submitButton).toBeDisabled()
   expect(mockSaveData).toHaveBeenCalledTimes(1)
-  expect(mockSaveData).toHaveBeenCalledWith(data)
+  expect(mockSaveData).toHaveBeenCalledWith({...data, id: fakeUser.id})
 })

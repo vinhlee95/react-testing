@@ -1,7 +1,7 @@
 import React from 'react'
 import { saveData } from '../api'
 
-export const TddForm = () => {
+export const TddForm = ({user}) => {
   const [isSubmitting, setSubmitting] = React.useState(false)
 
   const onSubmit = e => {
@@ -11,7 +11,8 @@ export const TddForm = () => {
     setSubmitting(true)
     saveData({
       title: title.value,
-      content: content.value
+      content: content.value,
+      id: user.id
     })
   }
 
