@@ -6,6 +6,10 @@ import {saveData as mockSaveData} from '../api'
 
 jest.mock('../api.js')
 
+afterEach(() => {
+  jest.clearAllMocks()
+})
+
 test('should render a form with title, content and submit button', () => {
   mockSaveData.mockResolvedValueOnce()
   const fakeUser = {id: 'user-1'}
