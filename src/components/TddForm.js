@@ -1,8 +1,11 @@
 import React from 'react'
+import {Redirect} from 'react-router-dom'
+
 import { saveData } from '../api'
 
 export const TddForm = ({user}) => {
   const [isSubmitting, setSubmitting] = React.useState(false)
+  const [isSubmitted, setSubmitted] = React.useState(false)
 
   const onSubmit = e => {
     e.preventDefault()
@@ -13,8 +16,10 @@ export const TddForm = ({user}) => {
       title: title.value,
       content: content.value,
       id: user.id
-    })
+    }).then(() => setSubmitted(true))
   }
+
+  if(isSubmitted) return <Redirect to='/' />
 
   return (
     <form onSubmit={onSubmit}>
