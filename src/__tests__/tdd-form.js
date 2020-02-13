@@ -4,6 +4,7 @@ import {Redirect as MockRedirect} from 'react-router-dom'
 
 import {TddForm} from '../components/TddForm'
 import {saveData as mockSaveData} from '../api'
+import * as dataMock from '../../test/data-mock'
 
 // Mock API module
 jest.mock('../api.js')
@@ -21,14 +22,12 @@ afterEach(() => {
 
 test('should render a form with title, content and submit button and redirect after submission', async () => {
   mockSaveData.mockResolvedValueOnce()
-  const fakeUser = {id: 'user-1'}
+
+  const fakeUser = dataMock.mockUser()
+  const data = dataMock.mockPost()
+
   const {getByLabelText, getByText} = render(<TddForm user={fakeUser} />)
   const submitButton = getByText(/submit/i)
-  const data = {
-    title: 'Title',
-    content: 'Content',
-    // foo: 'bar' enable this will fail the test
-  }
 
   getByLabelText(/title/i).value = data.title
   getByLabelText(/content/i).value = data.content
